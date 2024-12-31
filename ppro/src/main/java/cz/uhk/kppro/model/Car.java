@@ -1,9 +1,20 @@
 package cz.uhk.kppro.model;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+
 public class Car {
+    @NotEmpty(message = "SPZ is required")
     private String spz;
+    @NotEmpty(message = "Color is required")
     private String color;
+    @Min(value = 1)
+    @Max(value = 5)
     private float tankVolume;
+    @Min(value = 2)
+    @Max(value = 9)
+    private int numberOfSeats;
 
     public Car() {
     }
@@ -46,6 +57,4 @@ public class Car {
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
-
-    private int numberOfSeats;
 }

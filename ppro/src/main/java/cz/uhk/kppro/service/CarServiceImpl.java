@@ -8,7 +8,9 @@ import java.util.List;
 
 @Service
 public class CarServiceImpl implements CarService {
+
     private List<Car> cars = new ArrayList<>();
+
     @Override
     public List<Car> getAllCars() {
         return cars;
