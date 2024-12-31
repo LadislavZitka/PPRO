@@ -1,11 +1,21 @@
 package cz.uhk.kppro.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+import java.util.List;
+
+@Entity
+@Table(name = "drivers")
 public class Driver {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private int personalId;
 
     @NotEmpty(message = "Name is required")
@@ -13,21 +23,30 @@ public class Driver {
     private String name;
 
     @Min(value = 18, message = "Age must be at least 18")
-    @Max(value = 90, message = "Age must be bellow 90")
+    @Max(value = 90, message = "Age must not exceed 90")
     private int age;
 
     @Min(value = 10000, message = "Salary must be at least 10 000")
-    @Max(value = 200000, message = "Salary must be bellow 200 000")
+    @Max(value = 80000, message = "Salary must not exceed 80 000")
     private int salary;
 
-    public Driver() {
+    @OneToMany(mappedBy = "driver")
+    private List<Car> cars;
 
+    public List<Car> getCars() {
+        return cars;
     }
-    public Driver(int personalId, String name, int age, int salary) {
-        this.personalId = personalId;
-        this.name = name;
-        this.age = age;
-        this.salary = salary;
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getPersonalId() {

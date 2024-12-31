@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Car Details</title>
+  <meta charset="UTF-8">
+  <title>Car Details</title>
 </head>
 <body>
 <h1>Car Details</h1>
@@ -24,6 +24,10 @@
   <tr>
     <td>Number of Seats:</td>
     <td th:text="${car.numberOfSeats}"></td>
+  </tr>
+  <tr>
+    <td>Driver:</td>
+    <td th:text="${car.driver.name}"></td>
   </tr>
 </table>
 </body>

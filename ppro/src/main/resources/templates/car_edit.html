@@ -7,8 +7,9 @@
 <body>
 <h1 th:text="${edit ? 'Edit Car' : 'Create Car'}"></h1>
 <form th:object="${car}" th:action="${edit ? '/carUpdate' : '/carSave'}" method="post">
+    <input type="hidden" th:field="*{id}">
     <p>
-        License Plate Number: <input type="text" th:field="*{spz}" th:readonly="${edit}"/>
+        License Plate Number: <input type="text" th:field="*{spz}"/>
         <span th:if="${#fields.hasErrors('spz')}" th:errors="*{spz}"></span>
     </p>
     <p>
@@ -22,6 +23,12 @@
     <p>
         Number of Seats: <input type="text" th:field="*{numberOfSeats}"/>
         <span th:if="${#fields.hasErrors('numberOfSeats')}" th:errors="*{numberOfSeats}"></span>
+    </p>
+    <p>
+        Driver:
+        <select th:field="*{driver}">
+            <option th:each="driver : ${drivers}" th:value="${driver.id}" th:text="${driver.name}"></option>
+        </select>
     </p>
     <button type="submit">Save</button>
 </form>

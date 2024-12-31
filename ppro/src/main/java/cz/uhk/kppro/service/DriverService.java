@@ -8,8 +8,11 @@ import java.util.List;
 @Service
 public interface DriverService {
     List<Driver> getAllDrivers();
-    Driver getDriver(int index);
-    Driver deleteDriver(int index);
+    Driver getDriver(Long id);
+
+    Driver deleteDriver(Long id);
+
     boolean addDriver(Driver driver);
+
     boolean updateDriver(Driver driver);
 }
