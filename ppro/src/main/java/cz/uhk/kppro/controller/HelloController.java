@@ -3,13 +3,11 @@ package cz.uhk.kppro.controller;
 import cz.uhk.kppro.model.Car;
 import cz.uhk.kppro.service.CarService;
 import cz.uhk.kppro.service.DriverService;
+import cz.uhk.kppro.util.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +16,24 @@ import java.util.List;
 public class HelloController {
     private CarService carService;
     private DriverService driverService;
+    private WeatherService weatherService;
 
     @Autowired
-    public HelloController(CarService carService, DriverService driverService) {
+    public HelloController(CarService carService, DriverService driverService, WeatherService weatherService) {
         this.carService = carService;
         this.driverService = driverService;
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/")
-    public String main(Model model) {
+    public String main(@RequestParam(required = false) String city, Model model) {
         model.addAttribute("cars", carService.getAllCars());
         model.addAttribute("drivers", driverService.getAllDrivers());
+        if (city != null && !city.isEmpty()) {
+            String temp = weatherService.getTemp(city);
+            model.addAttribute("temp", temp);
+        }
+
         return "list";
     }
-
-    //private List<Car> cars = new ArrayList<Car>();
-
-
 }
