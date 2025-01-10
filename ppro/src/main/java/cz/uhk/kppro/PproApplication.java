@@ -11,18 +11,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class PproApplication {
+
 	private UserService userService;
+
 	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public PproApplication(UserService userService, PasswordEncoder passwordEncoder) {
-		this.userService = userService;
+	public PproApplication(UserService userService, PasswordEncoder passwordEncoder){
+		this.userService =userService;
 		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Bean
-	public CommandLineRunner demo(){
-		return args -> {
+	public CommandLineRunner demo() {
+		return (args) -> {
 			addUser("admin", "heslo", "ADMIN");
 			addUser("user", "heslo", "USER");
 		};
@@ -41,5 +43,4 @@ public class PproApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PproApplication.class, args);
 	}
-
 }
