@@ -12,7 +12,7 @@ public class Show {
 
     private String title;
     private String startTime;
-    private String endTime;     
+    private String endTime;
 
     @OneToMany(mappedBy = "show")
     private List<Seat> seats;
