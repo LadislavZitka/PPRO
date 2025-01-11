@@ -1,4 +1,4 @@
 package cz.uhk.kppro.model;
 
-public class Reservation {
+public class Movie {
 }
