@@ -2,6 +2,8 @@ package cz.uhk.kppro.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -11,6 +13,9 @@ public class User {
     private String username;
     private String password;
     private String role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
 
     public Long getId() {
         return id;
@@ -42,5 +47,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

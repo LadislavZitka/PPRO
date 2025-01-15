@@ -4,16 +4,18 @@ import cz.uhk.kppro.model.User;
 import cz.uhk.kppro.repository.UserRepository;
 import cz.uhk.kppro.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -26,13 +28,25 @@ public class UserServiceImpl implements UserService {
         return new MyUserDetails(user);
     }
 
-    @Override
+    public User getCurrentUser() {
+        String username = getCurrentUsername();
+        return userRepository.findByUsername(username);
+    }
+
+
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
-    @Override
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    private String getCurrentUsername() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof MyUserDetails) {
+            return ((MyUserDetails) principal).getUsername();
+        }
+        return principal.toString();
     }
 }

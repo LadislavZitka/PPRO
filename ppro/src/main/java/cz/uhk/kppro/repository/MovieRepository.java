@@ -1,4 +1,7 @@
 package cz.uhk.kppro.repository;
 
-public interface Movie {
+import org.springframework.data.jpa.repository.JpaRepository;
+import cz.uhk.kppro.model.Movie;
+
+public interface MovieRepository extends JpaRepository<Movie, Long> {
 }

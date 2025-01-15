@@ -1,6 +1,5 @@
 package cz.uhk.kppro.controller;
 
-import cz.uhk.kppro.model.Car;
 import cz.uhk.kppro.service.CarService;
 import cz.uhk.kppro.service.DriverService;
 import cz.uhk.kppro.util.WeatherService;
@@ -8,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -48,7 +44,7 @@ public class HelloController {
         return "403";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/admin/admin")
     public String admin(){
         return "admin";
     }
