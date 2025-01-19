@@ -31,7 +31,7 @@ public class HelloController {
             String temp = weatherService.getTemp(city);
             model.addAttribute("temp", temp);
         }
-        return "list";
+        return "home";
     }
 
     @GetMapping("/login")

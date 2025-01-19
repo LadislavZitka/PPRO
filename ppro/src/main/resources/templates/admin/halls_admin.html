@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reservations</title>
+    <title>Halls</title>
 </head>
 <body>
 <header>
@@ -13,11 +13,11 @@
         <input type="submit" value="Logout">
     </form>
 </header>
-<h1>List of Reservations:</h1>
-<a href="/reservationCreate">Add new Reservation</a>
+<h1>List of Halls:</h1>
+<a href="/hallCreate">Add new movie</a>
 <ul>
-    <li th:each="reservation : ${reservations}">
-        <a th:href="@{'/reservationDetail/' + ${reservation.id}}"><span th:text="${reservation.screening.movie.title} + ' ' + ${reservation.screening.hall.desc}"></span></a>
+    <li th:each="hall : ${halls}">
+        <a th:href="@{'/hallDetail/' + ${hall.id}}"><span th:text="${hall.desc}"></span></a>
     </li>
 </ul>
 
