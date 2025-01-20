@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
 </head>
 <body>
-
+<header>
+    <a th:href="@{/home}"><h3>Home</h3></a>
+    <form method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+<h1>Movies</h1>
+<ul>
+    <li th:each="movie: ${movies}">
+        <a th:href="@{'/movieDetail/' + ${movie.id}}"><span th:text="${movie.title}"></span></a>
+    </li>
+</ul>
+<h1>Reservations</h1>
+<ul>
+    <li th:each="reservation : ${reservations}">
+        <a th:href="@{'/reservationDetail/' + ${reservation.id}}"><span th:text="${reservation.screening.movie.title} + ' ' + ${reservation.screening.hall.desc}"></span></a>
+    </li>
+</ul>
 </body>
 </html>

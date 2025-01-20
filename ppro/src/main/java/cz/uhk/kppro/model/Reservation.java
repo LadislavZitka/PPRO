@@ -3,7 +3,7 @@ package cz.uhk.kppro.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "reservations")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

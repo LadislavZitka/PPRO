@@ -6,9 +6,7 @@
 </head>
 <body>
 <header>
-    <form method="post" th:action="@{/admin/admin}">
-        <input type="submit" value="Home">
-    </form>
+    <a href="@{/admin/admin}"><h3>Home</h3></a>
     <form method="post" th:action="@{/logout}">
         <input type="submit" value="Logout">
     </form>

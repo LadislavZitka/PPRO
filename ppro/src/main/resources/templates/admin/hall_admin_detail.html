@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Hall Details</title>
 </head>
 <body>
-
+<header>
+    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <form method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+<h1>Hall Details</h1>
+<a th:href="@{'/HallEdit' + ${id}}">Edit Hall</a>
+<a th:href="@{'/HallDelete' + ${id}}">Delete Hall</a>
+<table>
+    <tr>
+        <td>Description</td>
+        <td th:text="${hall.desc}"></td>
+    </tr>
+</table>
+<ul>
+    <li th:each="screening : ${screenings}">
+        <a th:href="@{'/screeningDetail/' + ${screening.id}}"><span th:text="${screening.movie.title} + ' ' + ${screening.hall.desc}"></span></a>
+    </li>
+</ul>
 </body>
 </html>
