@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${edit ? 'Edit Hall' : 'Create Hall'}"></title>
 </head>
 <body>
-
+<header>
+    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <form method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+<form th:object="${hall}" th:action="${edit ? '/hallUpdate' : '/hallSave'}">
+    <input type="hidden" th:field="*{id}">
+    <p>
+        Description: <input type="text" th:field="*{desc}"/>
+        <span th:if="${#fields.hasErrors('desc')}" th:errors="*{desc}"></span>
+    </p>
+    <button type="submit">Save</button>
+</form>
 </body>
 </html>

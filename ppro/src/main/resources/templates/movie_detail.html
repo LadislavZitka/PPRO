@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Movie Details</title>
 </head>
 <body>
-
+<header>
+    <a href="@{/home}"><h3>Home</h3></a>
+    <form method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+<table>
+    <tr>
+        <td>Movie Title</td>
+        <td th:text="${movie.title}"></td>
+    </tr>
+</table>
+<ul>
+    <li th:each="screening : ${screenings}">
+        <a th:href="@{'/reservationCreate/' + ${screening.id}}"><span th:text="${screening.hall.desc}"></span></a>
+    </li>
+</ul>
 </body>
 </html>

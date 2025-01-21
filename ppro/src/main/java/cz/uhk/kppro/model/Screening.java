@@ -1,6 +1,7 @@
 package cz.uhk.kppro.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "screenings")
@@ -11,10 +12,12 @@ public class Screening {
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
+    @NotEmpty(message = "Movie must be assigned")
     private Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "hall_id")
+    @NotEmpty(message = "Hall must be assigned")
     private Hall hall;
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package cz.uhk.kppro.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class Hall {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "description required")
     private String desc;
 
     @OneToMany(mappedBy = "hall")

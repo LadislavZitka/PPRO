@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${edit ? 'Edit Reservation' : 'Create Reservation'}"></title>
 </head>
 <body>
-
+<header>
+    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <form method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+<form th:object="${reservation}" th:action="${edit ? '/reservationUpdate' : '/reservationSave'}">
+    <input type="hidden" th:field="*{id}">
+    <p>
+        User:
+        <select th:field="*{user}">
+            <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+        </select>
+        Screening:
+        <select th:field="*{screening}">
+            <option th:each="screening : ${screenings}" th:value="${screening.id}" th:text="${screening.movie.title + ' ' + screening.hall.desc}"></option>
+        </select>
+    </p>
+    <button type="submit">Save</button>
+</form>
 </body>
 </html>

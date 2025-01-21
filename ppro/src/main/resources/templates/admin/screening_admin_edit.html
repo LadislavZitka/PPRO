@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${edit ? 'Edit screening' : 'Create screening'}"></title>
 </head>
 <body>
-
+<header>
+    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <form method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout">
+    </form>
+</header>
+<form th:object="${screening}" th:action="${edit ? '/screeningUpdate' : '/screeningSave'}">
+    <input type="hidden" th:field="*{id}">
+    <p>
+        Movie:
+        <select th:field="*{movie}">
+            <option th:each="movie : ${movies}" th:value="${movie.id}" th:text="${movie.title}"></option>
+        </select>
+        Hall:
+        <select th:field="*{hall}">
+            <option th:each="hall : ${halls}" th:value="${hall.id}" th:text="${hall.desc}"></option>
+        </select>
+    </p>
+    <button type="submit">Save</button>
+</form>
 </body>
 </html>
