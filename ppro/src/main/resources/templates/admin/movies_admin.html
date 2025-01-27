@@ -15,7 +15,7 @@
 <a href="/movieCreate">Add new movie</a>
 <ul>
      <li th:each="movie : ${movies}">
-         <a th:href="@{'/movieDetail/' + ${movie.id}}"><span th:text="${movie.title}"></span></a>
+         <a th:href="@{'/movieDetailAdmin/' + ${movie.id}}"><span th:text="${movie.title}"></span></a>
      </li>
 </ul>
 

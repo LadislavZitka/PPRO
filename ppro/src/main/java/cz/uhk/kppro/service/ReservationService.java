@@ -8,6 +8,7 @@ import java.util.List;
 @Service
 public interface ReservationService {
     List<Reservation> getReservations();
+    List<Reservation> getReservationsByUserId(Long userId);
     Reservation getReservation(Long id);
     Reservation deleteReservation(Long id);
     boolean addReservation(Reservation reservation);

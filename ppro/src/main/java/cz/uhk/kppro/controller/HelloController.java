@@ -1,7 +1,6 @@
 package cz.uhk.kppro.controller;
 
-import cz.uhk.kppro.service.CarService;
-import cz.uhk.kppro.service.DriverService;
+import cz.uhk.kppro.service.*;
 import cz.uhk.kppro.util.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,26 +10,24 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
-
-    private CarService carService;
-    private DriverService driverService;
-    private WeatherService weatherService;
+    private UserService userService;
+    private ScreeningService screeningService;
+    private ReservationService reservationService;
+    //private CarService carService;
+    //private DriverService driverService;
+    //private WeatherService weatherService;
 
     @Autowired
-    public HelloController(CarService carService, DriverService driverService, WeatherService weatherService){
-        this.carService = carService;
-        this.driverService = driverService;
-        this.weatherService = weatherService;
+    public HelloController(UserService userService, ScreeningService screeningService, ReservationService reservationService) {
+        this.userService = userService;
+        this.screeningService = screeningService;
+        this.reservationService = reservationService;
     }
 
-    @GetMapping("/")
-    public String main(@RequestParam(required = false) String city, Model model){
-        model.addAttribute("cars", carService.getAllCars());
-        model.addAttribute("drivers", driverService.getAllDrivers());
-        if(city != null && !city.isEmpty()) {
-            String temp = weatherService.getTemp(city);
-            model.addAttribute("temp", temp);
-        }
+    @GetMapping(value = {"/","/home"})
+    public String home(Model model){
+        model.addAttribute("screenings", screeningService.getAllScreenings());
+        model.addAttribute("reservations", reservationService.getReservationsByUserId(userService.getCurrentUser().getId()));
         return "home";
     }
 
@@ -46,7 +43,7 @@ public class HelloController {
 
     @GetMapping("/admin/admin")
     public String admin(){
-        return "admin";
+        return "admin/admin";
     }
 
 }

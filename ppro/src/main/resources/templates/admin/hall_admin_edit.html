@@ -11,7 +11,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
-<form th:object="${hall}" th:action="${edit ? '/hallUpdate' : '/hallSave'}">
+<form th:object="${hall}" th:action="${edit ? '/hallUpdate' : '/hallSave'}" method="post">
     <input type="hidden" th:field="*{id}">
     <p>
         Description: <input type="text" th:field="*{desc}"/>
