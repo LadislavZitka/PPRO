@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Reservation Detail</title>
 </head>
 <body>
-$END$
+<header>
+  <a href="@{/home}"><h3>Home</h3></a>
+  <form method="post" th:action="@{/logout}">
+    <input type="submit" value="Logout">
+  </form>
+</header>
+<h1>Reservation details</h1>
+<a th:href="@{'/ReservationEdit/' + ${id}}">Edit Screening</a>
+<a th:href="@{'/ReservationDelete/' + ${id}}">Delete Reservation</a>
+<table>
+  <tr>
+    <td>Movie Title</td>
+    <td th:text="${reservation.screening.movie.title}"></td>
+  </tr>
+  <tr>
+    <td>Hall</td>
+    <td th:text="${reservation.screening.hall.desc}"></td>
+  </tr>
+</table>
 </body>
 </html>

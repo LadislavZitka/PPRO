@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class HallController {
+public class    HallController {
     private HallService hallService;
     private ScreeningService screeningService;
 
@@ -42,6 +42,7 @@ public class HallController {
         model.addAttribute("edit", true);
         return "admin/hall_admin_edit";
     }
+
     @GetMapping("/hallCreate")
     public String hallCreate(Model model) {
         model.addAttribute("hall", new Hall());
@@ -51,7 +52,7 @@ public class HallController {
     @GetMapping("/hallDelete/{id}")
     public String hallDelete(@PathVariable Long id, Model model) {
         hallService.deleteHall(id);
-        return "redirect:/home";
+        return "redirect:/admin/admin";
     }
     @PostMapping("/hallSave")
     public String hallSave(@Valid Hall hall, BindingResult bindingResult, Model model) {
@@ -60,7 +61,7 @@ public class HallController {
             return "admin/hall_admin_edit";
         }
         hallService.addHall(hall);
-        return "redirect:/home";
+        return "redirect:/admin/admin";
     }
     @PostMapping("/hallUpdate")
     public String hallUpdate(@Valid Hall hall, BindingResult bindingResult, Model model) {
@@ -69,6 +70,6 @@ public class HallController {
             return "admin/hall_admin_edit";
         }
         hallService.updateHall(hall);
-        return "redirect:/home";
+        return "redirect:/admin/admin";
     }
 }

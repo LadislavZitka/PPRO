@@ -14,13 +14,13 @@
 <h1>Movies</h1>
 <ul>
     <li th:each="screening: ${screenings}">
-        <a th:href="@{'/screeningReserved/' + ${screening.id}}"><span th:text="${screening.movie.title + ' ' + screening.hall.desc}"></span></a>
+        <a th:href="@{'/reservationSave/' + ${screening.id}}"><span th:text="${screening.movie.title + ' ' + screening.hall.desc}"></span></a>
     </li>
 </ul>
 <h1>Reservations</h1>
 <ul>
     <li th:each="reservation : ${reservations}">
-        <a th:href="@{'/reservationDetail/' + ${reservation.id}}"><span th:text="${reservation.screening.movie.title + ' ' + reservation.screening.hall.desc}"></span></a>
+        <a th:href="@{'/reservationDetail/' + ${reservation.id}}"><span th:text="${reservation.screening.movie.title + ' ' + reservation.screening.hall.desc + ' reserved'}"></span></a>
     </li>
 </ul>
 </body>

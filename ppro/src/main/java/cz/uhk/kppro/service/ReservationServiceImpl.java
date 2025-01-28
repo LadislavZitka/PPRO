@@ -29,6 +29,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public boolean existsReservationByUserIdAndScreeningId(Long userId, Long screeningId) {
+        return  reservationRepository.existsByUserIdAndScreeningId(userId, screeningId);
+    }
+
+    @Override
     public Reservation getReservation(Long id) {
         return reservationRepository.findById(id).orElse(null);
     }

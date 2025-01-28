@@ -1,8 +1,14 @@
 package cz.uhk.kppro.controller;
 
 import cz.uhk.kppro.model.Screening;
+import cz.uhk.kppro.service.HallService;
+import cz.uhk.kppro.service.MovieService;
+import cz.uhk.kppro.service.ScreeningService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,28 +16,66 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ScreeningController {
-    @GetMapping("/screeningDetail/{id}")
+    private ScreeningService screeningService;
+    private MovieService movieService;
+    private HallService hallService;
+
+    @Autowired
+    public ScreeningController(ScreeningService screeningService, MovieService movieService, HallService hallService) {
+        this.screeningService = screeningService;
+        this.movieService = movieService;
+        this.hallService = hallService;
+    }
+
+    @GetMapping("/admin/screeningsAdmin")
+    public String screeningsAdmin(Model model) {
+        model.addAttribute("screenings", screeningService.getAllScreenings());
+        return "admin/screenings_admin";
+    }
+
+    @GetMapping("/admin/screeningDetail/{id}")
     public String screeningDetail(@PathVariable Long id, Model model) {
-        return "screening_detail";
+        model.addAttribute("screening", screeningService.getScreeningById(id));
+        return "admin/screening_admin_detail";
     }
     @GetMapping("/screeningEdit/{id}")
     public String screeningEdit(@PathVariable Long id, Model model) {
-        return "screening_edit";
+        model.addAttribute("screening", screeningService.getScreeningById(id));
+        model.addAttribute("movies", movieService.getAllMovies());
+        model.addAttribute("halls", hallService.getAllHalls());
+        model.addAttribute("edit", true);
+        return "admin/screening_admin_edit";
     }
+
     @GetMapping("/screeningCreate")
-    public String screeningCreate() {
-        return "screening_edit";
+    public String screeningCreate(Model model) {
+        model.addAttribute("screening", new Screening());
+        model.addAttribute("movies", movieService.getAllMovies());
+        model.addAttribute("halls", hallService.getAllHalls());
+        model.addAttribute("edit", false);
+        return "admin/screening_admin_edit";
     }
     @GetMapping("/screeningDelete/{id}")
     public String screeningDelete(@PathVariable Long id, Model model) {
-        return "redirect:/home";
+        screeningService.deleteScreening(id);
+        return "redirect:/admin/admin";
     }
     @PostMapping("/screeningSave")
-    public String screeningSave(@ModelAttribute Screening screening) {
-        return "redirect:/home";
+    public String screeningSave(@Valid Screening screening, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("edit", false);
+            return "admin/screening_admin_edit";
+        }
+        screeningService.addScreening(screening);
+        return "redirect:/admin/admin";
     }
     @PostMapping("/screeningUpdate")
-    public String screeningUpdate(@ModelAttribute Screening screening, Model model) {
-        return "redirect:/home";
+    public String screeningUpdate(@Valid Screening screening, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("edit", true);
+            return "admin/screening_admin_edit";
+        }
+        screeningService.updateScreening(screening);
+        return "redirect:/admin/admin";
     }
 }

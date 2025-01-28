@@ -9,6 +9,7 @@ import java.util.List;
 public interface ReservationService {
     List<Reservation> getReservations();
     List<Reservation> getReservationsByUserId(Long userId);
+    boolean existsReservationByUserIdAndScreeningId(Long userId, Long screeningId);
     Reservation getReservation(Long id);
     Reservation deleteReservation(Long id);
     boolean addReservation(Reservation reservation);

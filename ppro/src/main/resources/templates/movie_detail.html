@@ -19,7 +19,7 @@
 </table>
 <ul>
     <li th:each="screening : ${screenings}">
-        <a th:href="@{'/reservationCreate/' + ${screening.id}}"><span th:text="${screening.hall.desc}"></span></a>
+        <a th:href="@{'/reservationSave/' + ${screening.id}}"><span th:text="${screening.hall.desc}"></span></a>
     </li>
 </ul>
 </body>

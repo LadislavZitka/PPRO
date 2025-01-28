@@ -56,7 +56,7 @@ public class MovieController {
     @GetMapping("/movieDelete/{id}")
     public String movieDelete(@PathVariable Long id, Model model) {
         movieService.deleteMovie(id);
-        return "redirect:/home";
+        return "redirect:/admin/admin";
     }
     @PostMapping("/movieSave")
     public String movieSave(@Valid Movie movie, BindingResult bindingResult, Model model) {
@@ -65,7 +65,7 @@ public class MovieController {
             return "admin/movie_admin_edit";
         }
         movieService.addMovie(movie);
-        return "redirect:/home";
+        return "redirect:/admin/admin";
     }
     @PostMapping("/movieUpdate")
     public String movieUpdate(@Valid Movie movie, BindingResult bindingResult, Model model) {
@@ -74,6 +74,6 @@ public class MovieController {
             return "admin/movie_admin_edit";
         }
         movieService.updateMovie(movie);
-        return "redirect:/home";
+        return "redirect:/admin/admin";
     }
 }

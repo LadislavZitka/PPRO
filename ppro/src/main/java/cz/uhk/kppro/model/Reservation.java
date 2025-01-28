@@ -20,6 +20,15 @@ public class Reservation {
     @NotEmpty(message = "user must be assigned")
     private User user;
 
+    public Reservation(Screening screening, User user) {
+        this.screening = screening;
+        this.user = user;
+    }
+
+    public Reservation() {
+
+    }
+
     public Long getId() {
         return id;
     }
