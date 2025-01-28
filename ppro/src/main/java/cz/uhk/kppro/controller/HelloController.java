@@ -1,7 +1,6 @@
 package cz.uhk.kppro.controller;
 
 import cz.uhk.kppro.service.*;
-import cz.uhk.kppro.util.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +12,6 @@ public class HelloController {
     private UserService userService;
     private ScreeningService screeningService;
     private ReservationService reservationService;
-    //private CarService carService;
-    //private DriverService driverService;
-    //private WeatherService weatherService;
 
     @Autowired
     public HelloController(UserService userService, ScreeningService screeningService, ReservationService reservationService) {
