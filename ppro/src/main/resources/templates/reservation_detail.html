@@ -6,13 +6,13 @@
 </head>
 <body>
 <header>
-    <a href="@{/home}"><h3>Home</h3></a>
+    <a th:href="@{/home}"><h3>Home</h3></a>
     <form method="post" th:action="@{/logout}">
         <input type="submit" value="Logout">
     </form>
 </header>
 <h1>Reservation details</h1>
-<a th:href="@{'/ReservationDelete/' + ${id}}">Delete Reservation</a>
+<a th:href="@{'/reservationDelete/' + ${id}}">Delete Reservation</a>
 <table>
     <tr>
         <td>Movie Title</td>

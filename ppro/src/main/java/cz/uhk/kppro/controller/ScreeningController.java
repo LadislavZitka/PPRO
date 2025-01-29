@@ -33,12 +33,12 @@ public class ScreeningController {
         return "admin/screenings_admin";
     }
 
-    @GetMapping("/admin/screeningDetail/{id}")
+    @GetMapping("/admin/screeningDetailAdmin/{id}")
     public String screeningDetail(@PathVariable Long id, Model model) {
         model.addAttribute("screening", screeningService.getScreeningById(id));
         return "admin/screening_admin_detail";
     }
-    @GetMapping("/screeningEdit/{id}")
+    @GetMapping("/admin/screeningEditAdmin/{id}")
     public String screeningEdit(@PathVariable Long id, Model model) {
         model.addAttribute("screening", screeningService.getScreeningById(id));
         model.addAttribute("movies", movieService.getAllMovies());
@@ -46,8 +46,7 @@ public class ScreeningController {
         model.addAttribute("edit", true);
         return "admin/screening_admin_edit";
     }
-
-    @GetMapping("/screeningCreate")
+    @GetMapping("/admin/screeningCreateAdmin")
     public String screeningCreate(Model model) {
         model.addAttribute("screening", new Screening());
         model.addAttribute("movies", movieService.getAllMovies());
@@ -55,12 +54,12 @@ public class ScreeningController {
         model.addAttribute("edit", false);
         return "admin/screening_admin_edit";
     }
-    @GetMapping("/screeningDelete/{id}")
+    @GetMapping("/admin/screeningDeleteAdmin/{id}")
     public String screeningDelete(@PathVariable Long id, Model model) {
         screeningService.deleteScreening(id);
         return "redirect:/admin/admin";
     }
-    @PostMapping("/screeningSave")
+    @PostMapping("/admin/screeningSaveAdmin")
     public String screeningSave(@Valid Screening screening, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("edit", false);
@@ -69,7 +68,7 @@ public class ScreeningController {
         screeningService.addScreening(screening);
         return "redirect:/admin/admin";
     }
-    @PostMapping("/screeningUpdate")
+    @PostMapping("/admin/screeningUpdateAdmin")
     public String screeningUpdate(@Valid Screening screening, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("edit", true);

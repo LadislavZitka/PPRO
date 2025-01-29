@@ -7,14 +7,14 @@
 </head>
 <body>
 <header>
-  <a href="@{/admin/admin}"><h3>Home</h3></a>
+  <a th:href="@{/admin/admin}"><h3>Home</h3></a>
   <form method="post" th:action="@{/logout}">
     <input type="submit" value="Logout">
   </form>
 </header>
-<a href="@{'/admin/moviesAdmin'}"><h1>Movies</h1></a>
-<a href="@{'/admin/screeningsAdmin'}"><h1>Screenings</h1></a>
-<a href="@{'/admin/hallsAdmin'}"><h1>Halls</h1></a>
-<a href="@{'/admin/reservationsAdmin'}"><h1>Reservations</h1></a>
+<a th:href="@{'/admin/moviesAdmin'}"><h1>Movies</h1></a>
+<a th:href="@{'/admin/screeningsAdmin'}"><h1>Screenings</h1></a>
+<a th:href="@{'/admin/hallsAdmin'}"><h1>Halls</h1></a>
+<a th:href="@{'/admin/reservationsAdmin'}"><h1>Reservations</h1></a>
 </body>
 </html>

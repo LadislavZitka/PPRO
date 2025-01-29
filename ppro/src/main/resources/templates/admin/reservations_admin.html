@@ -6,16 +6,16 @@
 </head>
 <body>
 <header>
-    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <a th:href="@{/admin/admin}"><h3>Home</h3></a>
     <form method="post" th:action="@{/logout}">
         <input type="submit" value="Logout">
     </form>
 </header>
 <h1>List of Reservations:</h1>
-<a href="/reservationCreate">Add new Reservation</a>
+<a th:href="/admin/reservationCreateAdmin">Add new Reservation</a>
 <ul>
     <li th:each="reservation : ${reservations}">
-        <a th:href="@{'/reservationDetail/' + ${reservation.id}}"><span th:text="${reservation.screening.movie.title} + ' ' + ${reservation.screening.hall.desc}"></span></a>
+        <a th:href="@{'/admin/reservationDetailAdmin/' + ${reservation.id}}"><span th:text="${reservation.screening.movie.title} + ' ' + ${reservation.screening.hall.desc}"></span></a>
     </li>
 </ul>
 

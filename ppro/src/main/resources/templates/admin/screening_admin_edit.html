@@ -6,12 +6,12 @@
 </head>
 <body>
 <header>
-    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <a th:href="@{/admin/admin}"><h3>Home</h3></a>
     <form method="post" th:action="@{/logout}">
         <input type="submit" value="Logout">
     </form>
 </header>
-<form th:object="${screening}" th:action="${edit ? '/screeningUpdate' : '/screeningSave'}">
+<form th:object="${screening}" th:action="${edit ? '/admin/screeningUpdateAdmin' : '/admin/screeningSaveAdmin'}">
     <input type="hidden" th:field="*{id}">
     <p>
         Movie:

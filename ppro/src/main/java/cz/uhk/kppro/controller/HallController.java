@@ -30,31 +30,31 @@ public class    HallController {
         return "admin/halls_admin";
     }
 
-    @GetMapping("/hallDetail/{id}")
+    @GetMapping("/admin/hallDetailAdmin/{id}")
     public String hallDetail(@PathVariable Long id, Model model) {
         model.addAttribute("hall", hallService.getHallById(id));
         model.addAttribute("screenings", screeningService.getAllScreeningsByHallId(id));
         return "admin/hall_admin_detail";
     }
-    @GetMapping("/hallEdit/{id}")
+    @GetMapping("/admin/hallEditAdmin/{id}")
     public String hallEdit(@PathVariable Long id, Model model) {
         model.addAttribute("hall", hallService.getHallById(id));
         model.addAttribute("edit", true);
         return "admin/hall_admin_edit";
     }
 
-    @GetMapping("/hallCreate")
+    @GetMapping("/admin/hallCreateAdmin")
     public String hallCreate(Model model) {
         model.addAttribute("hall", new Hall());
         model.addAttribute("edit", false);
         return "admin/hall_admin_edit";
     }
-    @GetMapping("/hallDelete/{id}")
+    @GetMapping("/admin/hallDeleteAdmin/{id}")
     public String hallDelete(@PathVariable Long id, Model model) {
         hallService.deleteHall(id);
         return "redirect:/admin/admin";
     }
-    @PostMapping("/hallSave")
+    @PostMapping("/admin/hallSaveAdmin")
     public String hallSave(@Valid Hall hall, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("edit", false);
@@ -63,7 +63,7 @@ public class    HallController {
         hallService.addHall(hall);
         return "redirect:/admin/admin";
     }
-    @PostMapping("/hallUpdate")
+    @PostMapping("/admin/hallUpdateAdmin")
     public String hallUpdate(@Valid Hall hall, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("edit", true);

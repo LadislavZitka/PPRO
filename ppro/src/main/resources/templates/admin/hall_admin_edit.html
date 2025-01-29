@@ -6,12 +6,12 @@
 </head>
 <body>
 <header>
-    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <a th:href="@{/admin/admin}"><h3>Home</h3></a>
     <form method="post" th:action="@{/logout}">
         <input type="submit" value="Logout">
     </form>
 </header>
-<form th:object="${hall}" th:action="${edit ? '/hallUpdate' : '/hallSave'}" method="post">
+<form th:object="${hall}" th:action="${edit ? '/admin/hallUpdateAdmin' : '/admin/hallSaveAdmin'}" method="post">
     <input type="hidden" th:field="*{id}">
     <p>
         Description: <input type="text" th:field="*{desc}"/>

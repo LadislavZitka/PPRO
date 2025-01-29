@@ -6,16 +6,16 @@
 </head>
 <body>
 <header>
-    <a href="@{/admin/admin}"><h3>Home</h3></a>
+    <a th:href="@{/admin/admin}"><h3>Home</h3></a>
     <form method="post" th:action="@{/logout}">
         <input type="submit" value="Logout">
     </form>
 </header>
 <h1>List of Halls:</h1>
-<a href="/hallCreate">Add new movie</a>
+<a th:href="/admin/hallCreateAdmin">Add new hall</a>
 <ul>
     <li th:each="hall : ${halls}">
-        <a th:href="@{'/hallDetail/' + ${hall.id}}"><span th:text="${hall.desc}"></span></a>
+        <a th:href="@{'/admin/hallDetailAdmin/' + ${hall.id}}"><span th:text="${hall.desc}"></span></a>
     </li>
 </ul>
 

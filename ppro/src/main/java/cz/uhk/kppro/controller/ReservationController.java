@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -46,28 +45,32 @@ public class ReservationController {
         return "admin/reservation_admin_detail";
     }
 
-    @GetMapping("/reservationEdit/{id}")
+    @GetMapping("/admin/reservationEditAdmin/{id}")
     public String reservationEdit(@PathVariable Long id, Model model) {
         model.addAttribute("reservation", reservationService.getReservation(id));
         model.addAttribute("edit", true);
         return "admin/reservation_admin_edit";
     }
+
     @GetMapping("/reservationCreate")
     public String reservationCreate(Model model) {
         model.addAttribute("reservation", new Reservation());
         model.addAttribute("edit", false);
         return "admin/reservation_admin_edit";
     }
+
     @GetMapping("/reservationDelete/{id}")
     public String reservationDelete(@PathVariable Long id, Model model) {
         reservationService.deleteReservation(id);
         return "redirect:/home";
     }
+
     @GetMapping("/admin/reservationDeleteAdmin/{id}")
     public String reservationDeleteAdmin(@PathVariable Long id, Model model) {
         reservationService.deleteReservation(id);
         return "redirect:/admin/admin";
     }
+
     @PostMapping("/reservationSave/{id}")
     public String reservationSave(@PathVariable Long id, Model model) {
         if(!reservationService.existsReservationByUserIdAndScreeningId(userService.getCurrentUser().getId(), id)){
@@ -75,6 +78,7 @@ public class ReservationController {
         }
         return "redirect:/home";
     }
+
     @PostMapping("/admin/reservationSaveAdmin")
     public String reservationSaveAdmin(@Valid Reservation reservation, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {

@@ -7,11 +7,12 @@
 <body>
 <header>
     <a th:href="@{/home}"><h3>Home</h3></a>
+    <a th:href="@{/admin/admin}"><h3>Access Admin</h3></a>
     <form method="post" th:action="@{/logout}">
         <input type="submit" value="Logout">
     </form>
 </header>
-<h1>Movies</h1>
+<h1>Screenings</h1>
 <ul>
     <li th:each="screening: ${screenings}">
         <a th:href="@{'/reservationSave/' + ${screening.id}}"><span th:text="${screening.movie.title + ' ' + screening.hall.desc}"></span></a>
