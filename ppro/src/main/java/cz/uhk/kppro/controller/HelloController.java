@@ -37,6 +37,10 @@ public class HelloController {
         return "403";
     }
 
+    @GetMapping("/error")
+    public String errorGeneral(){
+        return "error";
+    }
     @GetMapping("/admin/admin")
     public String admin(){
         return "admin/admin";

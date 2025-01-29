@@ -11,7 +11,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
-<form th:object="${screening}" th:action="${edit ? '/admin/screeningUpdateAdmin' : '/admin/screeningSaveAdmin'}">
+<form th:object="${screening}" th:action="${edit ? '/admin/screeningUpdateAdmin' : '/admin/screeningSaveAdmin'}" method="post">
     <input type="hidden" th:field="*{id}">
     <p>
         Movie:

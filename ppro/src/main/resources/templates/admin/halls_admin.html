@@ -12,7 +12,7 @@
     </form>
 </header>
 <h1>List of Halls:</h1>
-<a th:href="/admin/hallCreateAdmin">Add new hall</a>
+<a th:href="@{/admin/hallCreateAdmin}">Add new hall</a>
 <ul>
     <li th:each="hall : ${halls}">
         <a th:href="@{'/admin/hallDetailAdmin/' + ${hall.id}}"><span th:text="${hall.desc}"></span></a>

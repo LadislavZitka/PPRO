@@ -12,7 +12,7 @@
     </form>
 </header>
 <h1>List of movies:</h1>
-<a th:href="/admin/movieCreateAdmin">Add new movie</a>
+<a th:href="@{/admin/movieCreateAdmin}">Add new movie</a>
 <ul>
      <li th:each="movie : ${movies}">
          <a th:href="@{'/admin/movieDetailAdmin/' + ${movie.id}}"><span th:text="${movie.title}"></span></a>

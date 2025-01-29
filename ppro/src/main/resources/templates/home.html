@@ -15,7 +15,10 @@
 <h1>Screenings</h1>
 <ul>
     <li th:each="screening: ${screenings}">
-        <a th:href="@{'/reservationSave/' + ${screening.id}}"><span th:text="${screening.movie.title + ' ' + screening.hall.desc}"></span></a>
+        <form th:action="@{'/reservationSave/' + ${screening.id}}" method="post">
+            <button type="submit"><span th:text="${screening.movie.title + ' ' + screening.hall.desc}"></span></button>
+        </form>
+        <!--<a th:href="@{'/reservationSave/' + ${screening.id}}"></a>-->
     </li>
 </ul>
 <h1>Reservations</h1>

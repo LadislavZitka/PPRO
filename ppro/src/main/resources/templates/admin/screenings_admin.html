@@ -12,7 +12,7 @@
     </form>
 </header>
 <h1>List of Screenings:</h1>
-<a th:href="/admin/screeningCreateAdmin">Add new Screening</a>
+<a th:href="@{/admin/screeningCreateAdmin}">Add new Screening</a>
 <ul>
     <li th:each="screening  : ${screenings}">
         <a th:href="@{'/admin/screeningDetailAdmin/' + ${screening.id}}"><span th:text="${screening.movie.title} + ' ' + ${screening.hall.desc}"></span></a>

@@ -12,7 +12,7 @@
     </form>
 </header>
 <h1>List of Reservations:</h1>
-<a th:href="/admin/reservationCreateAdmin">Add new Reservation</a>
+<a th:href="@{/admin/reservationCreateAdmin}">Add new Reservation</a>
 <ul>
     <li th:each="reservation : ${reservations}">
         <a th:href="@{'/admin/reservationDetailAdmin/' + ${reservation.id}}"><span th:text="${reservation.screening.movie.title} + ' ' + ${reservation.screening.hall.desc}"></span></a>

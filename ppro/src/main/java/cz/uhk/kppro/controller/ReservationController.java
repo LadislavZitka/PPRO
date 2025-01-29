@@ -52,9 +52,11 @@ public class ReservationController {
         return "admin/reservation_admin_edit";
     }
 
-    @GetMapping("/reservationCreate")
-    public String reservationCreate(Model model) {
+    @GetMapping("/admin/reservationCreateAdmin")
+    public String reservationCreateAdmin(Model model) {
         model.addAttribute("reservation", new Reservation());
+        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("screenings", screeningService.getAllScreenings());
         model.addAttribute("edit", false);
         return "admin/reservation_admin_edit";
     }
