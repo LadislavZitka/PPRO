@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${edit ? 'Edit Reservation' : 'Create Reservation'}"></title>
-</head>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" /></head>
 <body>
 <header>
     <a th:href="@{/admin/admin}"><h3>Home</h3></a>
@@ -11,6 +11,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
+<main>
 <form th:object="${reservation}" th:action="${edit ? '/admin/reservationUpdateAdmin' : '/admin/reservationSaveAdmin'}" method="post">
     <input type="hidden" th:field="*{id}">
     <p>
@@ -25,5 +26,6 @@
     </p>
     <button type="submit">Save</button>
 </form>
+</main>
 </body>
 </html>

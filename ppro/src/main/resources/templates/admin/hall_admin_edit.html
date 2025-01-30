@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${edit ? 'Edit Hall' : 'Create Hall'}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
 </head>
 <body>
 <header>
@@ -11,6 +12,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
+<main>
 <form th:object="${hall}" th:action="${edit ? '/admin/hallUpdateAdmin' : '/admin/hallSaveAdmin'}" method="post">
     <input type="hidden" th:field="*{id}">
     <p>
@@ -19,5 +21,6 @@
     </p>
     <button type="submit">Save</button>
 </form>
+</main>
 </body>
 </html>

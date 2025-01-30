@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Reservation Detail</title>
-</head>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" /></head>
 <body>
 <header>
     <a th:href="@{/home}"><h3>Home</h3></a>
@@ -11,6 +11,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
+<main>
 <h1>Reservation details</h1>
 <a th:href="@{'/reservationDelete/' + ${id}}">Delete Reservation</a>
 <table>
@@ -23,5 +24,6 @@
         <td th:text="${reservation.screening.hall.desc}"></td>
     </tr>
 </table>
+</main>
 </body>
 </html>

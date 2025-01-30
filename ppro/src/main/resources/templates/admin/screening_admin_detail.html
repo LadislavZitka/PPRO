@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Screening Detail</title>
-</head>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" /></head>
 <body>
 <header>
     <a th:href="@{/admin/admin}"><h3>Home</h3></a>
@@ -11,6 +11,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
+<main>
 <h1>Screening details</h1>
 <a th:href="@{'/admin/screeningEditAdmin/' + ${id}}">Edit Screening</a>
 <a th:href="@{'/admin/screeningDeleteAdmin/' + ${id}}">Delete Screening</a>
@@ -24,5 +25,6 @@
         <td th:text="${screening.hall.desc}"></td>
     </tr>
 </table>
+</main>
 </body>
 </html>

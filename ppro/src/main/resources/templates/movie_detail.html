@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Movie Details</title>
-</head>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" /></head>
 <body>
 <header>
     <a href="@{/home}"><h3>Home</h3></a>
@@ -11,6 +11,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
+<main>
 <table>
     <tr>
         <td>Movie Title</td>
@@ -22,5 +23,6 @@
         <a th:href="@{'/reservationSave/' + ${screening.id}}"><span th:text="${screening.hall.desc}"></span></a>
     </li>
 </ul>
+</main>
 </body>
 </html>

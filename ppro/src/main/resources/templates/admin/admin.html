@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+
 </head>
 <body>
 <header>
@@ -12,9 +13,11 @@
     <input type="submit" value="Logout">
   </form>
 </header>
+<main>
 <a th:href="@{/admin/moviesAdmin}"><h1>Movies</h1></a>
 <a th:href="@{/admin/screeningsAdmin}"><h1>Screenings</h1></a>
 <a th:href="@{/admin/hallsAdmin}"><h1>Halls</h1></a>
 <a th:href="@{/admin/reservationsAdmin}"><h1>Reservations</h1></a>
+</main>
 </body>
 </html>

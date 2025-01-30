@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Screenings</title>
-</head>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" /></head>
 <body>
 <header>
     <a th:href="@{/admin/admin}"><h3>Home</h3></a>
@@ -11,6 +11,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
+<main>
 <h1>List of Screenings:</h1>
 <a th:href="@{/admin/screeningCreateAdmin}">Add new Screening</a>
 <ul>
@@ -18,6 +19,6 @@
         <a th:href="@{'/admin/screeningDetailAdmin/' + ${screening.id}}"><span th:text="${screening.movie.title} + ' ' + ${screening.hall.desc}"></span></a>
     </li>
 </ul>
-
+</main>
 </body>
 </html>

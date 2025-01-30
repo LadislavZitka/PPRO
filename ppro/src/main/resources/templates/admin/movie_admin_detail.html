@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Movie Details</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
 </head>
 <body>
 <header>
@@ -11,6 +12,7 @@
         <input type="submit" value="Logout">
     </form>
 </header>
+<main>
 <h1>Movie Details</h1>
 <a th:href="@{'/admin/movieEditAdmin/' + ${id}}">Edit Movie</a>
 <a th:href="@{'/admin/movieDeleteAdmin/' + ${id}}">Delete Movie</a>
@@ -25,5 +27,6 @@
         <a th:href="@{'/admin/screeningDetailAdmin/' + ${screening.id}}"><span th:text="${screening.movie.title} + ' ' + ${screening.hall.desc}"></span></a>
     </li>
 </ul>
+</main>
 </body>
 </html>
