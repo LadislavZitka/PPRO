@@ -18,6 +18,8 @@ public class Reservation {
     @JoinColumn(name = "user_id")
     private User user;
 
+
+
     public Reservation(Screening screening, User user) {
         this.screening = screening;
         this.user = user;

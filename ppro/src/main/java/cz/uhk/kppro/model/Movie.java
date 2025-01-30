@@ -14,7 +14,7 @@ public class Movie {
     @NotEmpty(message = "required")
     private String title;
 
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movie")
     private List<Screening> screenings;
 
     public Long getId() {

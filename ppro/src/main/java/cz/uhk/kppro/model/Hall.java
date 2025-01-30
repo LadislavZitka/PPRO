@@ -15,7 +15,7 @@ public class Hall {
     @NotEmpty(message = "description required")
     private String desc;
 
-    @OneToMany(mappedBy = "hall")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hall")
     private List<Screening> screenings;
 
     public Long getId() {

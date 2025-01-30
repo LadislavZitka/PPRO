@@ -3,6 +3,8 @@ package cz.uhk.kppro.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.List;
+
 @Entity
 @Table(name = "screenings")
 public class Screening {
@@ -17,6 +19,9 @@ public class Screening {
     @ManyToOne
     @JoinColumn(name = "hall_id")
     private Hall hall;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "screening")
+    private List<Reservation> reservations;
 
     public Long getId() {
         return id;
